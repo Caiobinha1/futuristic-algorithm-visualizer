@@ -2,9 +2,7 @@
 
 A web-based application designed to visualize pathfinding and sorting algorithms in real time. The project includes interactive grid setup for pathfinding and real-time synthesized audio feedback for sorting.
 
-## Demo
-
-![Pathfinding & Sorting Demo](assets/demo.gif)
+### 🔗 **[Live Visualizer Demo](https://caiobinha1.github.io/futuristic-algorithm-visualizer/)**
 
 ## Features
 

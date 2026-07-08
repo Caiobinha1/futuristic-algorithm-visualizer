@@ -1,80 +1,40 @@
-# 🌌 Neural Visualizer | Interactive Algorithm Playground
+# Futuristic Algorithm Visualizer
 
-An interactive, high-fidelity real-time algorithm visualizer designed to bring pathfinding and sorting algorithms to life. Built with a stunning **cyberpunk/synthwave glassmorphic aesthetic**, it features glowing particle animations, responsive interactive grids, and real-time synthesized audio feedback using the Web Audio API.
+A web-based application designed to visualize pathfinding and sorting algorithms in real time. The project includes interactive grid setup for pathfinding and real-time synthesized audio feedback for sorting.
 
-👉 **[Live Demo](https://caiobinha1.github.io/futuristic-algorithm-visualizer/)** *(Link will be active once published to GitHub Pages)*
+## Demo
 
----
+![Pathfinding & Sorting Demo](assets/demo.gif)
 
-## 🎨 Visuals & Design System
+## Features
 
-The visualizer utilizes a dark-mode-first aesthetic with a curated color system:
-*   **Neon Teal (`#00f2fe`)**: Start Node, sorting swaps, active tabs.
-*   **Hot Pink (`#ff007f`)**: Target Node, sorting comparisons, active grids.
-*   **Solar Orange (`#ff9e00`)**: Shortest Path, fully sorted array states.
-*   **Deep Velvet Space (`#08070d`)**: Primary glassmorphic panels and dark backgrounds.
+### Pathfinding Grid
+*   **Algorithms:** Dijkstra, A* Search (Manhattan distance), Breadth-First Search (BFS), and Depth-First Search (DFS).
+*   **Interactivity:** Drag-and-drop start/target nodes, draw/erase custom walls on the grid, and generate randomized obstacle mazes.
+*   **Speed Control:** Adjustable animation delays (Slow, Normal, Fast, and Instant).
 
----
+### Array Sorting
+*   **Algorithms:** Quick Sort, Merge Sort, Bubble Sort, and Selection Sort.
+*   **Audio Synthesis:** Web Audio API oscillator nodes emit tones mapped to the values of array elements being sorted.
+*   **Live Metrics:** Real-time counters tracking comparisons and swaps/writes.
+*   **Controls:** Adjustable array size (10 to 120 elements) and speed.
 
-## ⚡ Features
+## Technologies Used
 
-### 1. 🏁 Grid Pathfinding Visualizer
-*   **Interactive Node Placement**: Drag and drop the **Start Node (Teal)** and **Target Node (Pink)** to configure the paths.
-*   **Dynamic Obstacles**: Click and drag on empty cells to draw **Walls** that algorithms must navigate around.
-*   **Algorithms Supported**:
-    *   **Dijkstra's Algorithm**: The gold standard. Guarantees the shortest path.
-    *   **A\* Search**: A heuristic-guided search (uses Manhattan distance) that solves significantly faster.
-    *   **Breadth-First Search (BFS)**: Explores equally in all directions. Guarantees the shortest path.
-    *   **Depth-First Search (DFS)**: Goes deep into branches first. Does not guarantee the shortest path (very cool to watch).
-*   **Maze Generator**: Instantly generate random obstacles with a single click.
-*   **Speed Control**: Adjust animation speeds from *Slow* to *Normal*, *Fast*, or *Instant* (zero latency).
+*   **HTML5 & CSS3:** Semantic markup, CSS grid/flexbox layouts, responsive design, custom styling variables, and keyframe animations.
+*   **JavaScript (ES6):** Asynchronous visual updates using `async/await` loop throttling, interactive grid mouse tracking, and Web Audio API control.
 
-### 2. 🎵 Synthesized Audio Sorting Visualizer
-*   **Musical Sorting**: Generates electronic synthesizer sine tones mapped directly to the height of the bars being shifted. The sound pitch ramps up as elements are organized.
-*   **Real-time Statistics**: Shows live counters for the number of **Comparisons** and **Swaps/Writes** performed during execution.
-*   **Algorithms Supported**:
-    *   **Quick Sort**: O(n log n) average. Uses an in-place pivot partition.
-    *   **Merge Sort**: O(n log n) stable. Recursively splits and writes segments.
-    *   **Bubble Sort**: O(n²) simple comparison swaps.
-    *   **Selection Sort**: O(n²) minimum element scans.
-*   **Adjustable Array Size**: Scale the array from 10 to 120 elements in real-time.
-*   **Audio Toggle**: Sound can be muted or unmuted dynamically.
+## Local Setup
 
----
+Since the application uses vanilla web technologies with zero dependencies, you can run it locally without compilation:
 
-## 🛠️ Technology Stack
-
-*   **Core**: HTML5 Semantic Markup
-*   **Styles**: Modern CSS3 (CSS Variables, Grid, Flexbox, Keyframe Animations, Backdrop Blur Filters)
-*   **Scripting**: Vanilla ES6 JavaScript (Asynchronous queues, `async/await` loop throttling, DOM interaction)
-*   **Audio**: Web Audio API (OscillatorNode sound synthesis)
-*   **Deployment**: GitHub Pages (Static hosting)
-
----
-
-## 🚀 How to Run Locally
-
-Since this project has **zero external dependencies** and is built entirely in vanilla JS, you do not need to install `npm` or run a local server.
-
-1. Clone this repository:
+1. Clone the repository:
    ```bash
    git clone https://github.com/Caiobinha1/futuristic-algorithm-visualizer.git
    ```
-2. Navigate into the folder:
+2. Open the `index.html` file in any modern web browser:
    ```bash
    cd futuristic-algorithm-visualizer
-   ```
-3. Open `index.html` directly in any modern browser (Chrome, Edge, Firefox, Safari):
-   ```bash
-   # On Windows (PowerShell)
+   # Windows:
    Start-Process index.html
    ```
-
----
-
-## 📸 Interactive Showcase
-
-*   **Pathfinding Grid**: Click and drag to create paths. Relocate endpoints. Watch the search wave expand from the start node until it locks onto the target.
-*   **Sorting Array**: Select your algorithm, click "Start Sorting", and listen to the audio gradient play notes in a harmonic sweep as the array transitions from disorder to order.
-
-*Designed with ❤️ for Caiobinha1.*

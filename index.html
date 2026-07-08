@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Futuristic Algorithm Visualizer | Pathfinding & Sorting</title>
+  <meta name="description" content="An interactive, high-fidelity real-time algorithm visualizer for pathfinding and sorting algorithms, featuring glowing glassmorphism, responsive grid controls, and audio feedback.">
+  
+  <!-- Typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+  
+  <!-- CSS Link -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="glow-bg"></div>
+  
+  <div class="app-container">
+    <header class="app-header">
+      <div class="logo">
+        <div class="logo-icon">▲</div>
+        <h1>NEURAL<span>VISUALIZER</span></h1>
+      </div>
+      <nav class="tab-navigation">
+        <button id="tab-pathfinding" class="tab-btn active" data-tab="pathfinding">
+          <svg class="icon" viewBox="0 0 24 24"><path d="M12 2L2 22h20L12 2zm0 3.99L19.53 19H4.47L12 5.99zM13 16h-2v2h2v-2zm0-6h-2v4h2v-4z"/></svg>
+          Pathfinding Grid
+        </button>
+        <button id="tab-sorting" class="tab-btn" data-tab="sorting">
+          <svg class="icon" viewBox="0 0 24 24"><path d="M10 20h4V4h-4v16zm-6 0h4v-8H4v8zM16 9v11h4V9h-4z"/></svg>
+          Array Sorting
+        </button>
+      </nav>
+    </header>
+
+    <main class="app-content">
+      <!-- CONTROL PANEL -->
+      <section class="control-panel glass">
+        <!-- Pathfinding Controls -->
+        <div id="controls-pathfinding" class="control-group active">
+          <div class="control-item">
+            <label for="algo-pathfinding">Algorithm</label>
+            <div class="custom-select">
+              <select id="algo-pathfinding">
+                <option value="dijkstra">Dijkstra's Algorithm (Guaranteed Shortest)</option>
+                <option value="astar">A* Search (Heuristic Shortest)</option>
+                <option value="bfs">Breadth-First Search (BFS)</option>
+                <option value="dfs">Depth-First Search (DFS)</option>
+              </select>
+            </div>
+          </div>
+          
+          <div class="control-item">
+            <label for="speed-pathfinding">Animation Speed</label>
+            <div class="custom-select">
+              <select id="speed-pathfinding">
+                <option value="slow">Slow</option>
+                <option value="medium" selected>Normal</option>
+                <option value="fast">Fast</option>
+                <option value="instant">Instant</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="control-actions">
+            <button id="btn-visualize-pathfinding" class="btn primary glowing-btn">
+              <span>Visualize Pathfinder</span>
+            </button>
+            <button id="btn-maze-pathfinding" class="btn secondary">Generate Maze</button>
+            <button id="btn-clear-walls" class="btn secondary">Clear Walls</button>
+            <button id="btn-clear-board" class="btn danger">Clear Board</button>
+          </div>
+        </div>
+
+        <!-- Sorting Controls -->
+        <div id="controls-sorting" class="control-group">
+          <div class="control-item">
+            <label for="algo-sorting">Algorithm</label>
+            <div class="custom-select">
+              <select id="algo-sorting">
+                <option value="quick">Quick Sort (O(n log n))</option>
+                <option value="merge">Merge Sort (O(n log n))</option>
+                <option value="bubble">Bubble Sort (O(n²))</option>
+                <option value="selection">Selection Sort (O(n²))</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="control-item slider-item">
+            <div class="slider-header">
+              <label for="size-sorting">Array Size</label>
+              <span id="size-value">40</span>
+            </div>
+            <input type="range" id="size-sorting" min="10" max="120" value="40">
+          </div>
+
+          <div class="control-item slider-item">
+            <div class="slider-header">
+              <label for="speed-sorting">Speed</label>
+              <span id="speed-value">Medium</span>
+            </div>
+            <input type="range" id="speed-sorting" min="1" max="100" value="50">
+          </div>
+
+          <div class="control-item checkbox-item">
+            <label class="switch">
+              <input type="checkbox" id="sound-sorting" checked>
+              <span class="slider round"></span>
+            </label>
+            <span class="label-text">Audio Feedback</span>
+          </div>
+
+          <div class="control-actions">
+            <button id="btn-visualize-sorting" class="btn primary glowing-btn">
+              <span>Start Sorting</span>
+            </button>
+            <button id="btn-generate-sorting" class="btn secondary">New Array</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- VISUALIZER BOARD -->
+      <section class="visualizer-board glass">
+        <!-- Pathfinding Board View -->
+        <div id="view-pathfinding" class="board-view active">
+          <div class="legend">
+            <div class="legend-item"><span class="node-legend node-start"></span>Start Node</div>
+            <div class="legend-item"><span class="node-legend node-target"></span>Target Node</div>
+            <div class="legend-item"><span class="node-legend node-wall"></span>Wall</div>
+            <div class="legend-item"><span class="node-legend node-unvisited"></span>Unvisited</div>
+            <div class="legend-item"><span class="node-legend node-visited-legend"></span>Visited</div>
+            <div class="legend-item"><span class="node-legend node-shortest-legend"></span>Shortest Path</div>
+          </div>
+          <div class="instructions">
+            <p>💡 Click and drag <strong>Start (Blue)</strong> or <strong>Target (Pink)</strong> to relocate them. Click and drag on empty cells to <strong>draw walls</strong>.</p>
+          </div>
+          <div id="grid-container" class="grid-wrapper">
+            <!-- Grid generated by JS -->
+          </div>
+        </div>
+
+        <!-- Sorting Board View -->
+        <div id="view-sorting" class="board-view">
+          <div class="sorting-stats">
+            <div class="stat-box">
+              <span class="stat-label">Comparisons:</span>
+              <span id="stat-comparisons" class="stat-val">0</span>
+            </div>
+            <div class="stat-box">
+              <span class="stat-label">Swaps/Writes:</span>
+              <span id="stat-swaps" class="stat-val">0</span>
+            </div>
+          </div>
+          <div id="sorting-container" class="sorting-wrapper">
+            <!-- Bars generated by JS -->
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="app-footer">
+      <p>Designed for <strong>Caiobinha1</strong> | Powered by Antigravity AI | <a href="https://github.com/Caiobinha1" target="_blank" id="footer-github-link">GitHub Profile</a></p>
+    </footer>
+  </div>
+
+  <!-- JS Module Scripts -->
+  <script src="app.js"></script>
+  <script src="pathfinding.js"></script>
+  <script src="sorting.js"></script>
+</body>
+</html>
